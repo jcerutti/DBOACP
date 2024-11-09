@@ -5,7 +5,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    cursor: url('/cursor/01.cur'), auto; /* Aquí aplicamos el cursor personalizado */
+    cursor: url('/cursor/01.cur'), auto;
 }
 
 .registro-container {
@@ -22,7 +22,7 @@ h1 {
     font-family: 'Saiyan-Sans', sans-serif;
     color: #FFBF00;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
-    font-size: 52px; /* Tamaño ajustable */
+    font-size: 52px;
     font-weight: bold;
 }
 
@@ -78,17 +78,15 @@ button:hover {
     color: #333;
 }
 
-/* Contenedor para las contraseñas y el botón */
 .password-container {
     position: relative;
     width: 100%;
-    display: flex; /* Asegura que los elementos estén alineados horizontalmente */
-    align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
+    display: flex;
+    align-items: center;
 }
 
-/* Campo de entrada de la contraseña */
 .password-container input {
-    width: calc(100% - 35px); /* Asegura que haya espacio suficiente para el botón */
+    width: calc(100% - 35px);
     padding: 10px;
     font-size: 14px;
     border-radius: 5px;
@@ -96,10 +94,9 @@ button:hover {
     box-sizing: border-box;
 }
 
-/* Botón para mostrar/ocultar la contraseña */
 .toggle-btn {
-    width: 25px; /* Botón cuadrado pequeño */
-    height: 25px; /* Hacerlo cuadrado */
+    width: 25px;
+    height: 25px;
     background: none;
     border: none;
     color: #333;
@@ -109,8 +106,8 @@ button:hover {
     text-align: center;
     display: flex;
     justify-content: center;
-    align-items: center; /* Centra el contenido dentro del botón */
-    margin-left: 5px; /* Un pequeño margen a la izquierda para separar el botón del campo */
+    align-items: center;
+    margin-left: 5px;
 }
 
 .toggle-btn:focus {
@@ -128,40 +125,245 @@ button:hover {
     border-radius: 5px;
 }
 
-/* Media Query para pantallas más pequeñas (móviles) */
 @media screen and (max-width: 600px) {
-    /* Reducir el tamaño de la fuente y el campo de la contraseña en dispositivos pequeños */
     .password-container input {
-        font-size: 12px; /* Reducir tamaño de texto */
-        padding: 8px; /* Reducir padding */
+        font-size: 12px;
+        padding: 8px;
     }
 
     .toggle-btn {
-        font-size: 16px; /* Reducir tamaño del icono */
-        width: 25px; /* Hacer el botón más pequeño */
-        height: 25px; /* Hacer el botón más pequeño */
+        font-size: 16px;
+        width: 25px;
+        height: 25px;
     }
 
     .registro-container {
-        width: 90%; /* Dejar un margen en los lados */
+        width: 90%;
         padding: 15px;
     }
 
     .registro-container h1 {
-        font-size: 20px; /* Reducir tamaño del título */
+        font-size: 20px;
     }
 
     form {
         display: flex;
         flex-direction: column;
-        gap: 10px; /* Espacio entre los campos */
+        gap: 10px;
     }
 
     label {
-        font-size: 14px; /* Reducir tamaño de los labels */
+        font-size: 14px;
     }
 
     button {
-        font-size: 14px; /* Reducir tamaño del botón */
+        font-size: 14px;
     }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.login-container {
+
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+}
+
+.login-container label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: url('/cursor/02.cur'), pointer;
+}
+
+.login-container button:hover {
+    background-color: #0056b3;
+}
+
+.account-info {
+    padding: 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+}
+
+.account-info button {
+    background-color: #ff4b5c;
+    border: none;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.account-info button:hover {
+    background-color: #d93a4f;
+}
+
+.navigation {
+    float: left;
+    width: 25%;
+    background-color: #f8f9fa;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.navigation h3 {
+    margin-top: 0;
+}
+
+.navigation ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navigation li a {
+    display: block;
+    padding: 8px;
+    color: #007bff;
+    text-decoration: none;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.navigation li a:hover {
+    background-color: #e9ecef;
+    color: #0056b3;
+}
+
+.character-details {
+    margin-left: 25%;
+    padding: 20px;
+}
+
+.character-details h2 {
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+}
+
+.character-details p {
+    margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .navigation {
+        width: 100%;
+        float: none;
+    }
+
+    .character-details {
+        margin-left: 0;
+    }
+}
+
+.welcome-container {
+    width: 90%;
+    max-width: 400px;
+    background-color: rgba(169, 169, 169, 0.8);
+    padding: 20px;
+    margin: 50px auto;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-family: 'Saiyan-Sans', sans-serif;
+    color: #FFBF00;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+.character-info {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.character-info h2 {
+    color: #333;
+}
+
+.character-info p {
+    font-size: 16px;
+    color: #555;
+}
+
+
+/* Estilo del Popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-container {
+    background-color: white;
+    padding: 20px;
+    position: relative;
+    max-width: 400px;
+    margin: auto;
+    border-radius: 8px;
+}
+
+.close-btn {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+}
+
+.close-btn:hover {
+    color: #ff0000;
+}
+
+.error-msg {
+    color: red;
+}
+
+.success-msg {
+    color: green;
 }

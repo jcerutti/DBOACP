@@ -1,14 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "dbo_acc";
+session_start();
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+require_once 'db_connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
@@ -17,50 +10,68 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $confirm_password = $_POST['confirm_password'];
 
     if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
-        header("Location: index.php?error=Todos%20los%20campos%20son%20obligatorios.");
+        $_SESSION['error'] = "Todos los campos son obligatorios.";
+        header("Location: registrar.php?error=" . urlencode($_SESSION['error']));
         exit();
     }
+
     if (strlen($username) < 4 || strlen($username) > 16) {
-        header("Location: index.php?error=El%20nombre%20de%20usuario%20debe%20tener%20entre%204%20y%2016%20caracteres.");
+        $_SESSION['error'] = "El nombre de usuario debe tener entre 4 y 16 caracteres.";
+        header("Location: registrar.php?error=" . urlencode($_SESSION['error']));
         exit();
     }
+
     if (strlen($password) < 5 || strlen($password) > 24 || !preg_match('/[a-zA-Z]/', $password) || !preg_match('/\d/', $password)) {
-        header("Location: index.php?error=La%20contraseña%20debe%20tener%20letras%20y%20números%20sin%20símbolos%20y%20tener%20entre%205%20y%2024%20caracteres.");
+        $_SESSION['error'] = "La contraseña debe tener letras y números sin símbolos y tener entre 5 y 24 caracteres.";
+        header("Location: registrar.php?error=" . urlencode($_SESSION['error']));
         exit();
     }
+
     if ($password != $confirm_password) {
-        header("Location: index.php?error=Las%20contraseñas%20no%20coinciden.");
+        $_SESSION['error'] = "Las contraseñas no coinciden.";
+        header("Location: registrar.php?error=" . urlencode($_SESSION['error']));
         exit();
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header("Location: index.php?error=Correo%20electrónico%20inválido.");
+        $_SESSION['error'] = "Correo electrónico inválido.";
+        header("Location: registrar.php?error=" . urlencode($_SESSION['error']));
         exit();
     }
 
-    $stmt = $conn->prepare("SELECT * FROM accounts WHERE Username = ?");
-    $stmt->bind_param("s", $username);  // "s" para string
-    $stmt->execute();
-    $result = $stmt->get_result();
+    try {
+        $stmt = $conn_acc->prepare("SELECT * FROM accounts WHERE Username = ?");
+        $stmt->bindParam(1, $username, PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($result->num_rows > 0) {
-        header("Location: index.php?error=El%20nombre%20de%20usuario%20ya%20está%20en%20uso.");
+        if ($result) {
+            $_SESSION['error'] = "El nombre de usuario ya está en uso.";
+            header("Location: registrar.php?error=" . urlencode($_SESSION['error']));
+            exit();
+        }
+
+        $password_hash = md5($password);
+
+        $stmt = $conn_acc->prepare("INSERT INTO accounts (Username, Password_hash, acc_status, email, reg_date, last_ip) 
+                                    VALUES (?, ?, 'active', ?, NOW(), '127.0.0.1')");
+        $stmt->bindParam(1, $username, PDO::PARAM_STR);
+        $stmt->bindParam(2, $password_hash, PDO::PARAM_STR);
+        $stmt->bindParam(3, $email, PDO::PARAM_STR);
+
+        if ($stmt->execute()) {
+            $_SESSION['success'] = "¡Te has registrado correctamente!";
+            header("Location: registrar.php?success=" . urlencode($_SESSION['success']));
+            exit();
+        } else {
+            $_SESSION['error'] = "Error al registrar la cuenta.";
+            header("Location: registrar.php?error=" . urlencode($_SESSION['error']));
+            exit();
+        }
+    } catch (PDOException $e) {
+        $_SESSION['error'] = "Error de conexión o consulta: " . $e->getMessage();
+        header("Location: registrar.php?error=" . urlencode($_SESSION['error']));
         exit();
     }
-
-    $password_hash = md5($password);
-
-    $stmt = $conn->prepare("INSERT INTO accounts (Username, Password_hash, acc_status, email, reg_date, last_ip) 
-                            VALUES (?, ?, 'active', ?, NOW(), '127.0.0.1')");
-    $stmt->bind_param("sss", $username, $password_hash, $email);
-
-    if ($stmt->execute()) {
-        echo "Cuenta registrada exitosamente";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-
-    $stmt->close();
-    $conn->close();
 }
 ?>

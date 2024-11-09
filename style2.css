@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('fondo-dbo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    cursor: url('/cursor/01.cur'), auto;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(169, 169, 169, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Saiyan-Sans', sans-serif;
+    color: #FFBF00;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+    font-size: 52px;
+    font-weight: bold;
+}
+
+h3 {
+    font-family: 'Saiyan-Sans', sans-serif;
+    font-size: 24px;
+    color: #FFBF00;
+	text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+	 font-weight: bold;
+}
+
+.account-info {
+    text-align: center;
+	text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+    margin-bottom: 30px;
+}
+
+.account-info p {
+    font-size: 18px;
+    color: #fff;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+}
+
+.character-list {
+    width: 25%;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.character-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.character-list ul li {
+    font-size: 18px;
+    color: #333;
+    padding: 8px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.character-list ul li:last-child {
+    border-bottom: none;
+}
+
+.character-details {
+    width: 70%;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.character-details h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.character-details p {
+    font-size: 18px;
+    color: #333;
+    margin: 5px 0;
+}
+
+.logout-button {
+    display: block;
+    width: 200px;
+    padding: 12px;
+    margin: 0 auto;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.logout-button:hover {
+    background-color: #0056b3;
+}
