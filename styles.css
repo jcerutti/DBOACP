@@ -5,6 +5,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
+    cursor: url('/cursor/01.cur'), auto; /* Aquí aplicamos el cursor personalizado */
 }
 
 .registro-container {
@@ -49,7 +50,7 @@ button {
     border: none;
     border-radius: 5px;
     margin-top: 15px;
-    cursor: pointer;
+    cursor: url('/cursor/02.cur'), pointer;
 }
 
 button:hover {
@@ -69,7 +70,6 @@ button:hover {
     font-family: 'Saiyan-Sans';
     src: url('fonts/Saiyan-Sans.ttf') format('truetype');
 }
-
 
 #password-strength-status-text {
     margin-top: 5px;
@@ -126,4 +126,42 @@ button:hover {
 #password-strength-status {
     background-color: transparent;
     border-radius: 5px;
+}
+
+/* Media Query para pantallas más pequeñas (móviles) */
+@media screen and (max-width: 600px) {
+    /* Reducir el tamaño de la fuente y el campo de la contraseña en dispositivos pequeños */
+    .password-container input {
+        font-size: 12px; /* Reducir tamaño de texto */
+        padding: 8px; /* Reducir padding */
+    }
+
+    .toggle-btn {
+        font-size: 16px; /* Reducir tamaño del icono */
+        width: 25px; /* Hacer el botón más pequeño */
+        height: 25px; /* Hacer el botón más pequeño */
+    }
+
+    .registro-container {
+        width: 90%; /* Dejar un margen en los lados */
+        padding: 15px;
+    }
+
+    .registro-container h1 {
+        font-size: 20px; /* Reducir tamaño del título */
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* Espacio entre los campos */
+    }
+
+    label {
+        font-size: 14px; /* Reducir tamaño de los labels */
+    }
+
+    button {
+        font-size: 14px; /* Reducir tamaño del botón */
+    }
 }
