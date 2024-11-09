@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('fondo-dbo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.registro-container {
+    width: 400px;
+    background-color: rgba(169, 169, 169, 0.8);
+    padding: 20px;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Saiyan-Sans', sans-serif;
+    color: #FFBF00;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+    font-size: 52px; /* Tamaño ajustable */
+    font-weight: bold;
+}
+
+label {
+    font-size: 16px;
+    margin-top: 10px;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Botón de envío */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.error-msg {
+    color: red;
+    background-color: #f8d7da;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+@font-face {
+    font-family: 'Saiyan-Sans';
+    src: url('fonts/Saiyan-Sans.ttf') format('truetype');
+}
+
+#password-strength-status {
+    height: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px; /* Añadido para crear espacio debajo de la barra */
+    transition: width 0.3s ease;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+#password-strength-status-text {
+    margin-top: 5px;
+    font-size: 14px;
+    text-align: left;
+    color: #333;
+}
