@@ -47,3 +47,21 @@ function displayStrength(strength, statusElement, textElement) {
     statusElement.style.backgroundColor = strengthColor;
     textElement.innerHTML = strengthText;
 }
+
+document.getElementById('toggle-password').addEventListener('click', function() {
+    var passwordField = document.getElementById('password');
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+    } else {
+        passwordField.type = 'password';
+    }
+});
+
+document.getElementById('toggle-confirm-password').addEventListener('click', function() {
+    var confirmPasswordField = document.getElementById('confirm_password');
+    if (confirmPasswordField.type === 'password') {
+        confirmPasswordField.type = 'text';
+    } else {
+        confirmPasswordField.type = 'password';
+    }
+});

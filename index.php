@@ -72,15 +72,19 @@ if (isset($_GET['error'])) {
             <input type="email" id="email" name="email" required>
 
             <label for="password">Contraseña:</label>
-            <input type="password" id="password" name="password" required>
+            <div class="password-container">
+                <input type="password" id="password" name="password" required>
+                <button type="button" id="toggle-password" class="toggle-btn">👁️</button>
+            </div>
 
             <div id="password-strength-status"></div>
-            <div id="password-strength-status-text"></div>
-
             <br>
 
             <label for="confirm_password">Confirmar Contraseña:</label>
-            <input type="password" id="confirm_password" name="confirm_password" required>
+            <div class="password-container">
+                <input type="password" id="confirm_password" name="confirm_password" required>
+                <button type="button" id="toggle-confirm-password" class="toggle-btn">👁️</button>
+            </div>
 
             <script src="password-strength.js"></script>
 
